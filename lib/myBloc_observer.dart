@@ -10,4 +10,10 @@ class MyObserver extends BlocObserver {
 
     log('${bloc.runtimeType}: $change');
   }
+
+  // @override
+  // void onCreate(BlocBase bloc) {
+  //   super.onCreate(bloc);
+  //   log('$bloc');
+  // }
 }

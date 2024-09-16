@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:cubit_demo/bloc_screen.dart';
+import 'package:cubit_demo/screen/bloc_screen.dart';
 import 'package:cubit_demo/counter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'counter_cubit.dart';
+import '../counter_cubit.dart';
 import 'cubit_screen.dart';
 
 class MyHomePage extends StatefulWidget {

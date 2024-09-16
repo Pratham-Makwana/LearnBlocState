@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'counter_bloc.dart';
+import '../counter_bloc.dart';
 
 class BlocScreen extends StatefulWidget {
   const BlocScreen({super.key});
@@ -13,17 +13,16 @@ class BlocScreen extends StatefulWidget {
 }
 
 class _BlocScreenState extends State<BlocScreen> {
-  final _bloc = CounterBloc();
+  //final _bloc = CounterBloc();
 
-  @override
-  void dispose() {
-    _bloc.close();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _bloc.close();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    log("${_bloc.state}", name: 'Counter');
     return Scaffold(
       /// appbar
       appBar: AppBar(
@@ -40,7 +39,7 @@ class _BlocScreenState extends State<BlocScreen> {
               'You have pushed the button this many times:',
             ),
             BlocBuilder<CounterBloc, int>(
-              bloc: _bloc,
+             // bloc: _bloc,
               builder: (context, state) {
                 return Text(
                   '$state',
@@ -53,7 +52,9 @@ class _BlocScreenState extends State<BlocScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _bloc.add(CounterIncrement());
+          /// finding the [CounterBloc] object in the current context and using it
+          final bloc = context.read<CounterBloc>();
+          bloc.add(CounterIncrement());
           //bloc.add(CounterDecrement());
         },
         tooltip: 'Increment',

@@ -12,18 +12,17 @@ class CubitScreen extends StatefulWidget {
 }
 
 class _CubitScreenState extends State<CubitScreen> {
-  final _cubit = CounterCubit();
+  // final _cubit = CounterCubit();
 
-
-  @override
-  void dispose() {
-    _cubit.close();
-    super.dispose();
-  }
+  //
+  // @override
+  // void dispose() {
+  //   _cubit.close();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    log("${_cubit.state}", name: 'Counter');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -37,7 +36,7 @@ class _CubitScreenState extends State<CubitScreen> {
               'You have pushed the button this many times:',
             ),
             BlocBuilder<CounterCubit, int>(
-              bloc: _cubit,
+              // bloc: _cubit,
               builder: (context, state) {
                 return Text(
                   '$state',
@@ -49,7 +48,11 @@ class _CubitScreenState extends State<CubitScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _cubit.incrementCounter,
+        onPressed: () {
+          //final cubit = BlocProvider.of<CounterCubit>(context);
+          final cubit = context.read<CounterCubit>();
+          cubit.incrementCounter();
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), //
