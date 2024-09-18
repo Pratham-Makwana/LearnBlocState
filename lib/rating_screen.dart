@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:cubit_demo/Cubit/rating_cubit.dart';
 import 'package:cubit_demo/Cubit/rating_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,9 +17,27 @@ class RatingScreen extends StatelessWidget {
         children: [
           /// BlocBuilder when you want to work each & every value update on the screen
           /// BlocSelector when you want to listen single state variable update
-          BlocBuilder<RatingCubit, RatingState>(
+          // BlocBuilder<RatingCubit, RatingState>(
+          //   // buildWhen: (previous, current) =>
+          //   //     previous.blocScore != current.blocScore,
+          //   builder: (context, state) {
+          //     log('Bloc is Awesome', name: 'Rebuild');
+          //     return Text(
+          //       '${state.blocScore} vs ${state.cubitScore}',
+          //       style: const TextStyle(fontSize: 18),
+          //     );
+          //   },
+          // ),
+          /// BlocConsumer is Combination of BlocBuilder and BlocListener and its bit heavy
+          BlocConsumer<RatingCubit, RatingState>(
             // buildWhen: (previous, current) =>
             //     previous.blocScore != current.blocScore,
+            listenWhen: (previous, current) =>
+                current.blocScore == 5 || current.cubitScore == 5,
+            listener: (context, state) {
+              final snackBar = SnackBar(content: Text(state.blocScore == 5 ?'Bloc Win': 'Cubit Win'));
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
             builder: (context, state) {
               log('Bloc is Awesome', name: 'Rebuild');
               return Text(
@@ -33,9 +49,17 @@ class RatingScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Bloc is Awesome: ',
-                style: TextStyle(fontSize: 18),
+              BlocListener<RatingCubit, RatingState>(
+                listenWhen: (previous, current) => current.blocScore == 5,
+                listener: (context, state) {
+                  log('Bloc Wins', name: 'Rebuild');
+                  const snackBar = SnackBar(content: Text('Bloc Win'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                child: const Text(
+                  'Bloc is Awesome: ',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
               BlocSelector<RatingCubit, RatingState, int>(
                 selector: (state) => state.blocScore,

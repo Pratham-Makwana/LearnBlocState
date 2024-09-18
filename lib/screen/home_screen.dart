@@ -1,21 +1,20 @@
 import 'dart:developer';
 
+import 'package:cubit_demo/rating_screen.dart';
 import 'package:cubit_demo/screen/bloc_screen.dart';
 import 'package:cubit_demo/counter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../counter_cubit.dart';
 import 'cubit_screen.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   // final cubit = CounterCubit(0);
   final bloc = CounterBloc();
 
@@ -57,6 +56,18 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text(
                 'Cubit',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+
+            const SizedBox(height: 25,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const RatingScreen()));
+              },
+              child: const Text(
+                'Rating Screen',
                 style: TextStyle(fontSize: 18),
               ),
             ),

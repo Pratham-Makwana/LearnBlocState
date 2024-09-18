@@ -1,6 +1,6 @@
 import 'package:cubit_demo/Cubit/rating_cubit.dart';
 import 'package:cubit_demo/myBloc_observer.dart';
-import 'package:cubit_demo/rating_screen.dart';
+import 'package:cubit_demo/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const RatingScreen(),
+        home: const HomeScreen(),
       ),
     );
   }
