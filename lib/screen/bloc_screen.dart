@@ -3,7 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../counter_bloc.dart';
+
+import '../bloc_counter/controller/counter_bloc.dart';
 
 class BlocScreen extends StatefulWidget {
   const BlocScreen({super.key});

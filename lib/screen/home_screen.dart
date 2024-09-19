@@ -1,10 +1,9 @@
 import 'dart:developer';
-
-import 'package:cubit_demo/rating_screen.dart';
+import 'package:cubit_demo/screen/rating_screen.dart';
 import 'package:cubit_demo/screen/bloc_screen.dart';
-import 'package:cubit_demo/counter_bloc.dart';
 import 'package:flutter/material.dart';
 
+import '../bloc_counter/controller/counter_bloc.dart';
 import 'cubit_screen.dart';
 
 class HomeScreen extends StatefulWidget {
