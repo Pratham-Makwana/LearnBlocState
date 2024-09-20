@@ -18,8 +18,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   # Random Data
   faker: ^2.2.0
-
+  # bloc
   flutter_bloc: ^8.1.6
+  # Http
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
