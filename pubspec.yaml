@@ -20,6 +20,8 @@ dependencies:
   faker: ^2.2.0
   # bloc
   flutter_bloc: ^8.1.6
+  # Equatable
+  equatable: ^2.0.5
   # Http
   http: ^1.2.2
 

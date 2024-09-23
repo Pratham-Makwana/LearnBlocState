@@ -1,7 +1,9 @@
 import 'package:cubit_demo/bloc/developer_bloc.dart';
 import 'package:cubit_demo/data/repository/ip_repository.dart';
+import 'package:cubit_demo/equatable_cubit/like_cubit.dart';
 import 'package:cubit_demo/ip_cubit/ip_cubit.dart';
 import 'package:cubit_demo/presentation/screens/Ip_screen.dart';
+import 'package:cubit_demo/screen/equatable_screen.dart';
 import 'package:cubit_demo/widgets/myBloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +25,8 @@ class MyApp extends StatelessWidget {
         value: repo,
       ),
       child: BlocProvider(
-        create: (context) => IpCubit(repo),
+        create: (context) => LikeCubit(),
+        //create: (context) => IpCubit(repo),
         //create: (context) => DeveloperBloc(),
         //create: (context) => RatingCubit(),
         child: MaterialApp(
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const IpScreen(),
+          home: const EquatableScreen(),
         ),
       ),
     );
